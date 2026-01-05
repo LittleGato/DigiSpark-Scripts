@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel 99Food - Entregas</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <div>
+          <p class="eyebrow">Entregas 99Food</p>
+          <h1>Painel minimalista</h1>
+          <p class="subtitle">Controle diário com comando de voz.</p>
+        </div>
+        <button id="voiceToggle" class="button button-primary" type="button">
+          🎙️ Falar com a IA
+        </button>
+      </header>
+
+      <section class="card">
+        <div class="card-header">
+          <h2>Resumo do dia</h2>
+          <span id="voiceStatus" class="status">Voz desligada</span>
+        </div>
+        <div class="grid">
+          <label class="field">
+            <span>Início do dia</span>
+            <input type="time" id="startTime" />
+          </label>
+          <label class="field">
+            <span>Fim do dia</span>
+            <input type="time" id="endTime" />
+          </label>
+          <label class="field">
+            <span>Combustível (R$)</span>
+            <input type="number" id="fuelSpent" step="0.01" min="0" placeholder="0,00" />
+          </label>
+          <label class="field">
+            <span>Km do dia</span>
+            <input type="text" id="totalKm" readonly />
+          </label>
+          <label class="field">
+            <span>Tempo total (min)</span>
+            <input type="text" id="totalMinutes" readonly />
+          </label>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-header">
+          <h2>Registrar corrida</h2>
+          <p class="helper">Informe os dados da corrida ou use a voz.</p>
+        </div>
+        <div class="grid grid-compact">
+          <label class="field">
+            <span>Quilômetros</span>
+            <input type="number" id="runKm" min="0" step="0.1" placeholder="Ex: 5" />
+          </label>
+          <label class="field">
+            <span>Tempo (min)</span>
+            <input type="number" id="runMinutes" min="0" step="1" placeholder="Ex: 18" />
+          </label>
+          <button id="addRun" class="button" type="button">Registrar corrida</button>
+        </div>
+
+        <div class="list">
+          <div class="list-header">
+            <span>#</span>
+            <span>Km</span>
+            <span>Tempo</span>
+            <span></span>
+          </div>
+          <div id="runsList" class="list-body"></div>
+        </div>
+      </section>
+
+      <section class="card card-muted">
+        <h2>Último comando</h2>
+        <p id="lastTranscript" class="transcript">Nenhum comando de voz ainda.</p>
+      </section>
+
+      <div id="confirmPanel" class="confirm hidden" role="dialog" aria-live="polite">
+        <div class="confirm-content">
+          <p id="confirmMessage"></p>
+          <div class="confirm-actions">
+            <button id="confirmYes" class="button button-primary" type="button">Confirmar</button>
+            <button id="confirmEdit" class="button" type="button">Editar</button>
+            <button id="confirmNo" class="button button-ghost" type="button">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
